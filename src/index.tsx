@@ -1,4 +1,5 @@
 import { NativeModules, Platform } from 'react-native';
+import type { AssetBroswerProps } from './AssetBrowserManager';
 
 const LINKING_ERROR =
   `The package '@ancloudcreation/react-native-asset-browser' doesn't seem to be linked. Make sure: \n\n` +
@@ -9,12 +10,12 @@ const LINKING_ERROR =
 // @ts-expect-error
 const isTurboModuleEnabled = global.__turboModuleProxy != null;
 
-const ReactNativeAssetBrowserModule = isTurboModuleEnabled
-  ? require('./NativeReactNativeAssetBrowser').default
-  : NativeModules.ReactNativeAssetBrowser;
+const AssetBrowserManager = isTurboModuleEnabled
+  ? require('./AssetBrowserManager').default
+  : NativeModules.AssetBrowserManager;
 
-const ReactNativeAssetBrowser = ReactNativeAssetBrowserModule
-  ? ReactNativeAssetBrowserModule
+const ReactNativeAssetBrowserManager = AssetBrowserManager
+  ? AssetBrowserManager
   : new Proxy(
       {},
       {
@@ -24,6 +25,6 @@ const ReactNativeAssetBrowser = ReactNativeAssetBrowserModule
       }
     );
 
-export function multiply(a: number, b: number): Promise<number> {
-  return ReactNativeAssetBrowser.multiply(a, b);
+export function browseAssets(props: AssetBroswerProps) {
+  return ReactNativeAssetBrowserManager.show(props)
 }

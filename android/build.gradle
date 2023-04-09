@@ -79,6 +79,17 @@ dependencies {
   // For > 0.71, this will be replaced by `com.facebook.react:react-android:$version` by react gradle plugin
   //noinspection GradleDynamicVersion
   implementation "com.facebook.react:react-native:+"
+
+// 添加本框架 BigImageViewPager https://github.com/SherlockGougou/BigImageViewPager
+  implementation 'com.github.SherlockGougou:BigImageViewPager:androidx-7.2.0'
+
+  // 另外还需要依赖 glide
+  implementation 'com.github.bumptech.glide:glide:4.11.0'
+  implementation 'com.github.bumptech.glide:okhttp3-integration:4.11.0'
+
+  // java用户:
+  annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+
 }
 
 if (isNewArchitectureEnabled()) {

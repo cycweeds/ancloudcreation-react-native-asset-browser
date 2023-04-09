@@ -16,8 +16,8 @@ public class ReactNativeAssetBrowserPackage extends TurboReactPackage {
   @Nullable
   @Override
   public NativeModule getModule(String name, ReactApplicationContext reactContext) {
-    if (name.equals(ReactNativeAssetBrowserModule.NAME)) {
-      return new ReactNativeAssetBrowserModule(reactContext);
+    if (name.equals(AssetBrowserManager.NAME)) {
+      return new AssetBrowserManager(reactContext);
     } else {
       return null;
     }
@@ -29,10 +29,10 @@ public class ReactNativeAssetBrowserPackage extends TurboReactPackage {
       final Map<String, ReactModuleInfo> moduleInfos = new HashMap<>();
       boolean isTurboModule = BuildConfig.IS_NEW_ARCHITECTURE_ENABLED;
       moduleInfos.put(
-              ReactNativeAssetBrowserModule.NAME,
+        AssetBrowserManager.NAME,
               new ReactModuleInfo(
-                      ReactNativeAssetBrowserModule.NAME,
-                      ReactNativeAssetBrowserModule.NAME,
+                AssetBrowserManager.NAME,
+                AssetBrowserManager.NAME,
                       false, // canOverrideExistingModule
                       false, // needsEagerInit
                       true, // hasConstants
